@@ -34,6 +34,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Snap
 
+# Boost Framework
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
+
 # Common init scripts
 PRODUCT_PACKAGES += \
     init.qcom.rc
