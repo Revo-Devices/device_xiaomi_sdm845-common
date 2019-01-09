@@ -12,7 +12,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=true \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.miui.cit,com.qualcomm.qti.qmmi \
+    vendor.camera.aux.packagelist=com.google.android.GoogleCamera,com.miui.cit,com.qualcomm.qti.qmmi \
     vendor.camera.aux.packagelist.ext=,com.xiaomi.biometric,com.xiaomi.biometric.haldemo \
     persist.vendor.camera.multicam.hwsync=TRUE \
     persist.vendor.camera.multicam.fpsmatch=TRUE \
