@@ -59,3 +59,15 @@ on property:sys.boot_completed=1
     write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/dm-2/queue/read_ahead_kb 128
     write /sys/block/dm-3/queue/read_ahead_kb 128
+
+on property:persist.revo.perfmode=0
+    write /sys/class/thermal/thermal_message/sconfig 2
+
+on property:persist.revo.perfmode=1
+    write /sys/class/thermal/thermal_message/sconfig 0
+
+on property:persist.revo.perfmode=2
+    write /sys/class/thermal/thermal_message/sconfig 13
+
+on property:persist.revo.perfmode=3
+    write /sys/class/thermal/thermal_message/sconfig 10

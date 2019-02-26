@@ -35,7 +35,7 @@ public class Preferences {
     }
     public static int getProfileId(Context context, String packageName){
         if (TextUtils.isEmpty(packageName)){
-            return ThermalProfiles.MODE_DEFAULT;
+            return ThermalProfiles.getRevoPerf();
         }
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         return prefs.getInt(packageName, ThermalProfiles.getDefaultProfileId(packageName));

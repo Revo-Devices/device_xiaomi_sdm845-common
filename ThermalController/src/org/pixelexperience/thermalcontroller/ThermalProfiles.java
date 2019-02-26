@@ -17,12 +17,14 @@
 package org.pixelexperience.thermalcontroller;
 
 import android.util.Log;
+import android.os.SystemProperties;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 public class ThermalProfiles {
     public static final int MODE_DEFAULT = 0;
+    public static final int MODE_POWERSAVE  = 2;
     public static final int MODE_DIALER = 8;
     public static final int MODE_GAME = 9;
     public static final int MODE_PERFORMANCE = 10;
@@ -31,7 +33,7 @@ public class ThermalProfiles {
     public static final int MODE_PUBG = 13;
     public static final int MODE_VIDEO = 14;
 
-    public static final int supportedProfiles[] = {MODE_DEFAULT, MODE_DIALER, MODE_GAME,
+    public static final int supportedProfiles[] = {MODE_DEFAULT, MODE_POWERSAVE, MODE_DIALER, MODE_GAME,
         MODE_PERFORMANCE, MODE_BROWSER, MODE_CAMERA, MODE_PUBG, MODE_VIDEO};
 
     private static final String TAG = "ThermalController:ThermalProfiles";
@@ -68,8 +70,28 @@ public class ThermalProfiles {
             case "com.google.android.GoogleCamera":
                 return MODE_CAMERA;
             default:
-                return MODE_DEFAULT;
+                return getRevoPerf();
         }
+    }
+
+    public static int getRevoPerf() { 
+        int thermal = 0;
+        int revoPerf = 0;
+        try {
+	        revoPerf = SystemProperties.getInt("persist.revo.perfmode",1);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to read global profile", e);
+        }
+        if (revoPerf == 0) {
+            thermal = 2;
+        } else if (revoPerf == 2)  {
+            thermal = 9;     
+        } else if (revoPerf == 3)  {
+            thermal = 10;     
+        } else {
+            thermal = 0;
+        }
+        return thermal;
     }
 
     public static void writeProfile(int profileId) {

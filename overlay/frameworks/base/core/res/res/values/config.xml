@@ -383,4 +383,7 @@
     <!-- Whether to allow sending active app broadcast -->
     <bool name="config_allowActivePackageBroadcast">true</bool>
 
+    <!-- Support revo perf modes -->
+    <bool name="config_supportPerfModes">true</bool>
+
 </resources>

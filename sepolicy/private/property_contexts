@@ -1,1 +1,2 @@
 vendor.camera.aux.packageblacklist u:object_r:vendor_camera_prop:s0
+persist.revo.perfmode       u:object_r:perf_mode_prop:s0

@@ -29,7 +29,7 @@ public class Receiver extends BroadcastReceiver {
     private static final boolean DEBUG = false;
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(Context context, Intent intent) {     
         if (intent.getAction() != null && intent.getAction().equals(ThermalController.ACTIVE_PACKAGE_CHANGED_ACTION)) {
             if (DEBUG) Log.d(TAG, "Received " + ThermalController.ACTIVE_PACKAGE_CHANGED_ACTION);
             if (intent.getExtras() != null) {
@@ -44,6 +44,8 @@ public class Receiver extends BroadcastReceiver {
                 }
                 ThermalProfiles.writeProfile(profile);
             }
-        }
+        } else {
+            ThermalProfiles.writeProfile(ThermalProfiles.getRevoPerf());  
+    	}
     }
 }
