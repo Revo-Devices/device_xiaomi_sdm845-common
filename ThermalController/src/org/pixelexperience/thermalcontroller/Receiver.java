@@ -34,7 +34,7 @@ public class Receiver extends BroadcastReceiver {
             if (DEBUG) Log.d(TAG, "Received " + ThermalController.ACTIVE_PACKAGE_CHANGED_ACTION);
             if (intent.getExtras() != null) {
                 String packageName = intent.getExtras().getString(ThermalController.ACTIVE_PACKAGE_CHANGED_EXTRA);
-                int profile = 0;
+                int profile = ThermalProfiles.getRevoPerf();
                 if (packageName != null && !TextUtils.isEmpty(packageName)) {
                     if (DEBUG) Log.d(TAG, "Received " + packageName);
                     profile = Preferences.getProfileId(context, packageName);
@@ -44,8 +44,6 @@ public class Receiver extends BroadcastReceiver {
                 }
                 ThermalProfiles.writeProfile(profile);
             }
-        } else {
-            ThermalProfiles.writeProfile(ThermalProfiles.getRevoPerf());  
-    	}
+        }
     }
 }
